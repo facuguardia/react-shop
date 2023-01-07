@@ -15,7 +15,7 @@ import Checkout from "../pages/Checkout";
 import Orders from "../pages/Orders";
 import NotFound from "../pages/NotFound";
 // Styles
-import "../styles/global.css";
+import "@styles/global.css";
 
 const App = () => {
   return (
@@ -29,7 +29,6 @@ const App = () => {
           <Route exact path="/new-password" component={NewPassword} />
           <Route exact path="/my-account" component={MyAccount} />
           <Route exact path="/create-account" component={CreateAccount} />
-          {/* Checkout no funciona */}
           <Route exact path="/checkout" component={Checkout} />
           <Route exact path="/orders" component={Orders} />
           <Route path="#" component={NotFound} />
