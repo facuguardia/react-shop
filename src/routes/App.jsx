@@ -1,6 +1,10 @@
 // React and Router Dependencies
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+// Context
+import AppContext from "../context/AppContext";
+// Custom Hooks
+import useInitialState from "../hooks/useInitialState";
 // Containers
 import Layout from "../containers/Layout";
 // Pages
@@ -18,23 +22,30 @@ import NotFound from "../pages/NotFound";
 import "@styles/global.css";
 
 const App = () => {
+  const initialState = useInitialState();
   return (
-    <BrowserRouter>
-      <Switch>
-        <Layout>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/password-recovery" component={PasswordRecovery} />
-          <Route exact path="/send-email" component={SendEmail} />
-          <Route exact path="/new-password" component={NewPassword} />
-          <Route exact path="/my-account" component={MyAccount} />
-          <Route exact path="/create-account" component={CreateAccount} />
-          <Route exact path="/checkout" component={Checkout} />
-          <Route exact path="/orders" component={Orders} />
-          <Route path="#" component={NotFound} />
-        </Layout>
-      </Switch>
-    </BrowserRouter>
+    <AppContext.Provider value={initialState}>
+      <BrowserRouter>
+        <Switch>
+          <Layout>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/password-recovery"
+              component={PasswordRecovery}
+            />
+            <Route exact path="/send-email" component={SendEmail} />
+            <Route exact path="/new-password" component={NewPassword} />
+            <Route exact path="/my-account" component={MyAccount} />
+            <Route exact path="/create-account" component={CreateAccount} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/orders" component={Orders} />
+            <Route path="#" component={NotFound} />
+          </Layout>
+        </Switch>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 };
 
